@@ -32,8 +32,7 @@ export class AuroraMySQLSrv extends Stack {
             engine: DatabaseClusterEngine.auroraMysql({ version: AuroraMysqlEngineVersion.VER_3_03_0 }),
             instanceProps: { vpc, instanceType: new InstanceType('serverless'), },
             // instances: vpc.availabilityZones.length,
-            instances: 2,
-            port: rdbPort,
+            instances: 2, port: rdbPort,
         });
         (rdbCluster.node.defaultChild as CfnDBCluster).serverlessV2ScalingConfiguration = {
             minCapacity: 0.5, maxCapacity: 2,
